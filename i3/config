@@ -369,20 +369,20 @@ bindsym $mod+p exec "~/shs/spot.sh"
 bindsym $mod+e exec "~/shs/games.sh"
 bindsym $mod+Shift+b exec "~/shs/brightness.sh 0.5"
 bindsym $mod+Ctrl+b exec "~/shs/brightness.sh 1"
-#for_window [class="^.*"] border pixel 1 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 1 
 hide_edge_borders both 
+default_border pixel 1
 #gaps inner 10
 #gaps outer -5
 border_radius 0 
 
-default_floating_border pixel 2
+default_floating_border pixel 1 
 # class                 border  backgr. text    indicator child_border
-client.focused_inactive #1a1b26 #1a1b26 #1a1b26 #1a1b26   #1a1b26
-client.unfocused        #1a1b26 #1a1b26 #1a1b26 #1a1b26   #1a1b26
-client.focused          #D22640 #D22640 #ffffff #D22640   #7aa2f7
-client.urgent           #ff0000 #ff0000 #ffffff #ff0000   #ff0000
-client.placeholder      #1a1b26 #1a1b26 #1a1b26 #1a1b26   #1a1b26
+client.focused_inactive #1a1b26 #1a1b2600 #1a1b26 #1a1b26   #1a1b26
+client.unfocused        #1a1b26 #1a1b2600 #1a1b26 #1a1b26   #1a1b26
+client.focused          #7aa2f7 #7aa2f700 #ffffff #7aa2f7   #7aa2f7
+client.urgent           #ff0000 #ff000000 #ffffff #ff0000   #ff0000
+client.placeholder      #1a1b26 #1a1b2600 #1a1b26 #1a1b26   #1a1b26
 
-client.background       #1a1b26
+client.background       #00ff0000
 
