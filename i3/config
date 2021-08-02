@@ -266,7 +266,7 @@ mode "launcher" {
 		bindsym $mod+v split v
 
 		# letters left:
-		# J K X Y
+		# J K X H N Y
 
 		#applications
 		bindsym p exec --no-startup-id spotify
@@ -276,8 +276,6 @@ mode "launcher" {
 		bindsym shift+i exec qutebrowser ":open -p"
 		bindsym c exec discord
 		bindsym g exec steam
-		bindsym n exec "alacritty -e 'nnn'"
-		bindsym h exec "alacritty -e 'htop'"
 		bindsym m exec minecraft-launcher
 		bindsym b exec thunderbird
 		bindsym u exec unityhub
