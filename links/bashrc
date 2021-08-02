@@ -3,7 +3,7 @@
 #
 #old ps1
 #PS1='[\u@\h \W]\$ '
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W \$\[\033[00m\] '
+PS1='\[\033[01;31m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W \$\[\033[00m\] '
 HISTSIZE=10000
 HISTFILESIZE=10000
 
@@ -136,10 +136,6 @@ pfind(){
 	| xargs -ro paru -S
 }
 
-store(){
-	mv $(pwd)/$1 /mnt/BigLinux;
-	ln -s /mnt/BigLinux/$1 $1; 
-}
 
 #aliases
 alias nv="nvim"
@@ -168,3 +164,4 @@ alias vimcs="nvim -p *.cs"
 alias selfcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
 alias ani-cli="~/shs/ani-cli.sh"
 alias nvc="nvim main.cpp"
+alias conf="~/shs/conf.sh"

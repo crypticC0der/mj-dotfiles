@@ -6,7 +6,7 @@
 #cell_width_scale = 1.0
 #clickable_url = true
 #dynamic_title = true
-font = hack 9
+font = hack 10 
 #fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
@@ -26,7 +26,8 @@ scrollback_lines = 10000
 #cursor_blink = system
 
 # "block", "underline" or "ibeam"
-#cursor_shape = block
+cursor_shape = ibeam
+
 
 # Hide links that are no longer valid in url select overlay mode
 #filter_unmatched_urls = true
@@ -47,7 +48,7 @@ scrollback_lines = 10000
 #cursor_foreground = #dcdccc
 
 #foreground = #00ff00
-foreground_bold = #ff0000
+#foreground_bold = #ff0000
 #background = #000000
 
 # 20% background transparency (requires a compositor)
@@ -57,24 +58,24 @@ foreground_bold = #ff0000
 #highlight = #2f2f2f
 
 # Colors from color0 to color254 can be set
-background = #000000
-foreground = #00ff00
-color0 = #000000
-color1 = #990000
-color2 = #00a600
-color3 = #999900
-color4 = #0000b2
-color5 = #b200b2
-color6 = #c01848
-color7 = #bfbfbf
-color8 = #666666
-color9 = #e50000
-color10 = #00d900
-color11 = #e5e500
-color12 = #d83048
-color13 = #e500e5
-color14 = #186078
-color15 = #e5e5e5
+background = #1a1b26
+foreground = #a9b1d6
+color0 = #32344a
+color1 = #f7768e
+color2 = #9ece6a
+color3 = #e0af68
+color4 = #7aa2f7
+color5 = #ad8ee6
+color6 = #449dab
+color7 = #787c99
+color8 = #444b6a
+color9 = #ff7a93
+color10 = #b9f27c
+color11 = #ff9e64
+color12 = #7da6ff
+color13 = #bb9af7
+color14 = #0db9d7
+color15 = #acb0d0
 colorBD = #00ff00
 colorIT =
 colorUL =

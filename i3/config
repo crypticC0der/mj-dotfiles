@@ -16,6 +16,7 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+exec i3-msg "workspace main"
 exec "unclutter" 
 exec "sh -c '~/shs/all.sh'"
 exec "picom -I 0.01 -O 0.005 -i .8 -m .8 -f" 
@@ -67,8 +68,7 @@ bindsym Ctrl+Print exec "~/shs/save.sh"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+Return exec termite
+bindsym $mod+Return exec termite -e "tmux"
 bindsym --release $mod+x exec "kill $(xprop -id $(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}') | awk '/_NET_WM_PID\(CARDINAL\)/{print $NF}')"
 bindsym --release $mod+Shift+x exec "xkill"
 bindsym $mod+i exec qutebrowser
@@ -109,11 +109,6 @@ bindsym $mod+Shift+l move right
 #bindsym $mod+Shift+Right move right
 
 #move focused workspaces
-bindsym $mod+Ctrl+h move workspace to output left
-bindsym $mod+Ctrl+j move workspace to output down
-bindsym $mod+Ctrl+k move workspace to output up
-bindsym $mod+Ctrl+l move workspace to output right
-
 # alternatively, you can use the cursor keys:
 #bindsym $mod+Ctrl+Left move workspace to output left
 #bindsym $mod+Ctrl+Down move workspace to output down
@@ -169,41 +164,8 @@ focus_on_window_activation none
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
-# switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
-
+bindsym $mod+semicolon exec "~/shs/wsmanagement.sh"
+bindsym $mod+Shift+semicolon exec "~/shs/wsmanagement.sh move container to"
 bindsym $mod+M exec "~/shs/man.sh" 
 
 # reload the configuration file
@@ -270,21 +232,14 @@ mode "launcher" {
 
 		#applications
 		bindsym p exec --no-startup-id spotify
-		bindsym v exec glava
-		bindsym t exec alacritty
+		bindsym t exec termite -e "tmux"
 		bindsym i exec qutebrowser
 		bindsym shift+i exec qutebrowser ":open -p"
 		bindsym c exec discord
 		bindsym g exec steam
-		bindsym n exec "alacritty -e 'nnn'"
-		bindsym h exec "alacritty -e 'htop'"
 		bindsym m exec minecraft-launcher
-		bindsym b exec thunderbird
-		bindsym u exec unityhub
 		bindsym e exec gimp
-		bindsym v exec "VBoxManage startvm 'bunt'"
 		bindsym o exec libreoffice
-		bindsym r exec --no-startup-id obs
 		bindsym z exec ~/shs/zopen.sh
 
 		#exiters
@@ -308,17 +263,44 @@ mode "spotify" {
 		bindsym Shift+XF86AudioNext exec playerctl -p spotify next
 		bindsym Shift+XF86AudioPrev exec playerctl -p spotify previous
 
-		bindsym Ctrl+XF86AudioPlay exec playerctl -p qutebrowser play-pause
-		bindsym Ctrl+XF86AudioStop exec playerctl -p qutebrowser stop
-		bindsym Ctrl+XF86AudioNext exec playerctl -p qutebrowser next
-		bindsym Ctrl+XF86AudioPrev exec playerctl -p qutebrowser previous
+		bindsym Ctrl+XF86AudioPlay exec playerctl -p mpv qutebrowser play-pause
+		bindsym Ctrl+XF86AudioStop exec playerctl -p mpv qutebrowser stop
+		bindsym Ctrl+XF86AudioNext exec playerctl -p mpv qutebrowser next
+		bindsym Ctrl+XF86AudioPrev exec playerctl -p mpv qutebrowser previous
 
-		bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-		bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
-
+		#volume
 		bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ #increase sound volume
 		bindsym XF86AudioLowerVolume exec amixer set Master 5%- #decrease sound volume
 		bindsym XF86AudioMute exec amixer set Master toggle # mute sound
+
+		bindsym Shift+XF86AudioRaiseVolume exec "pactl set-sink-volume $(~/shs/sink.sh) +5% " 
+		#increase sound volume
+		bindsym Shift+XF86AudioLowerVolume exec "pactl set-sink-volume $(~/shs/sink.sh) -5% " 
+		#decrease sound volume
+
+		#keyboard orientateted controls
+		#player controls
+		bindsym Space exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" play-pause
+		bindsym Up exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" next
+		bindsym Down exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" previous
+
+		bindsym Shift+Space exec playerctl -p spotify play-pause
+		bindsym Shift+Up exec playerctl -p spotify next
+		bindsym Shift+Down exec playerctl -p spotify previous
+
+		bindsym Ctrl+Space exec playerctl -p qutebrowser mpv play-pause
+		bindsym Ctrl+Up exec playerctl -p qutebrowser mpv next
+		bindsym Ctrl+Down exec playerctl -p qutebrowser mpv previous
+
+		#volume controls
+		bindsym 0 exec amixer set Master 5%+ #increase sound volume
+		bindsym 9 exec amixer set Master 5%- #decrease sound volume
+		bindsym / exec amixer set Master toggle # mute sound
+
+		bindsym shift+0 exec "pactl set-sink-volume $(~/shs/sink.sh) +5% " 
+		#increase sound volume (shift+0)
+		bindsym shift+9 exec "pactl set-sink-volume $(~/shs/sink.sh) -5% " 
+		#decrease sound volume (shift+()
 
 		bindsym y exec "~/shs/pyspot.sh search playlist"
 		bindsym r exec "~/shs/pyspot.sh search artist"
@@ -339,22 +321,6 @@ mode "spotify" {
 		bindsym $mod+s mode "default"
 }
 
-mode "Dead Cells"{
-		bindsym 1 --release exec "xdotool key 5; xdotool key 2"	
-
-		bindsym $mod+r mode "resize"
-		bindsym Escape mode "default"
-		bindsym $mod+t mode "launcher"
-		bindsym $mod+s mode "default"
-}
-
-assign [class="discord"] 3
-assign [class="Spotify"] 5
-assign [class="spotify"] 5
-assign [class="Steam"] 4
-assign [class="mpv"] 1
-assign [class="GLava"] 5
-for_window [class = "Spotify"] move to workspace "5" 
 bindsym $mod+t mode "launcher"
 bindsym $mod+r mode "resize"
 bindsym $mod+Delete mode "Dead Cells"
@@ -362,9 +328,6 @@ bindsym $mod+s mode "spotify"
 bindsym $mod+Shift+g exec "~/shs/xgamer.sh"
 bindsym $mod+Ctrl+g exec "~/shs/xload.sh"
 bindsym $mod+c exec "sync; sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'"
-
-bindsym $mod+z exec "sudo python ~/.g213.py -c 6060ff ff60df ffffff ff60df 6060ff"
-bindsym $mod+Shift+z exec "sudo python ~/.g213.py -x 15000"
 
 bindsym $mod+p exec "~/shs/spot.sh"
 #bindsym $mod+g exec "~/shs/pyspot.sh add"
@@ -376,7 +339,6 @@ for_window [class="^.*"] border pixel 1
 hide_edge_borders both 
 #gaps inner 10
 #gaps outer -5
-border_radius 0 
 
 default_floating_border pixel 2
 # class                 border  backgr. text    indicator child_border

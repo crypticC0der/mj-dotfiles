@@ -141,7 +141,7 @@ font-2 = "Noto Sans CJK TC Medium:size=10:Noto Sans CJK TC:style=Medium;0"
 
 modules-left = title sep cpu memory filesystem
 modules-center = playing sep date
-modules-right = wired-network sep volume temperature sep i3 
+modules-right = network sep volume battery sep i3 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
