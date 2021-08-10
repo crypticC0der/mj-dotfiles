@@ -69,6 +69,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec termite -e "tmux"
+bindsym $mod+Shift+Return exec termite
 bindsym --release $mod+x exec "kill $(xprop -id $(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}') | awk '/_NET_WM_PID\(CARDINAL\)/{print $NF}')"
 bindsym --release $mod+Shift+x exec "xkill"
 bindsym $mod+i exec qutebrowser
@@ -321,6 +322,7 @@ mode "spotify" {
 		bindsym $mod+s mode "default"
 }
 
+bindcode 224 mode "launcer" 
 bindsym $mod+t mode "launcher"
 bindsym $mod+r mode "resize"
 bindsym $mod+Delete mode "Dead Cells"
