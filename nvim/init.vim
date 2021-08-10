@@ -11,6 +11,7 @@ set autoindent
 set smartindent
 set ignorecase
 set smartcase
+set foldmethod=syntax
 
 cabbrev bterm bo term
 call plug#begin("~/.config/nvim/plugged")
@@ -90,7 +91,7 @@ map <C-o> :NERDTreeToggle<CR>
 nmap <C-s> :split<CR>
 nmap <C-v> :vsplit<CR>
 nmap <C-t> :tab new<CR> 
- 
+nmap <C-u> :set relativenumber!<CR> :set number! <CR>
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect

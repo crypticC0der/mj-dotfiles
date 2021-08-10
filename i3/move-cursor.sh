@@ -1,5 +1,6 @@
 #!/bin/sh
 eval i3-msg $*
+sh -c "~/shs/polyfocus.sh" &
 HERE=`xdotool getwindowfocus`
 
 ULX=`xwininfo -id $HERE | grep "  Absolute upper-left X:" | awk '{print $4}'`
