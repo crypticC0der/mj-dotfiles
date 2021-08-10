@@ -13,7 +13,6 @@
 ; Adjust the _NET_WM_STRUT_PARTIAL top value
 ; Used for top aligned bars
 margin-bottom = 0
-
 ; Adjust the _NET_WM_STRUT_PARTIAL bottom value
 ; Used for bottom aligned bars
 margin-top = 0
@@ -155,7 +154,7 @@ dim-value = 1.0
 ; If the value is empty or undefined, the atom value
 ; will be created from the following template: polybar-[BAR]_[MONITOR]
 ; NOTE: The placeholders are not available for custom values
-wm-name = 
+wm-name = polybar_main 
 
 ; Locale used to localize various module data (e.g. date)
 ; Expects a valid libc locale, for example: sv_SE.UTF-8

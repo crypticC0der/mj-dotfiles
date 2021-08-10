@@ -18,7 +18,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 exec "unclutter" 
 exec "sh -c '~/shs/all.sh'"
-exec "picom -I 0.01 -O 0.005 -i .8 -m .8 -f" 
+exec "sh -c '~/shs/xload.sh'"
+exec "picom -I 0.01 -O 0.005 -i .8 -m .8 -f --experimental-backend" 
 exec "setxkbmap gb,gb"
 set $mod Mod4
 exec "feh --bg-fill -zD 14400 ~/wallpapers/*"
@@ -139,6 +140,9 @@ bindsym $mod+Mod1+h resize shrink width 25 px
 bindsym $mod+Mod1+j resize grow height 25 px
 bindsym $mod+Mod1+k resize shrink height 25 px
 bindsym $mod+Mod1+l resize grow width 25 px
+
+bindsym $mod+plus gaps inner current plus 5
+bindsym $mod+minus gaps inner current minus 5
 
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
@@ -347,6 +351,7 @@ mode "Dead Cells"{
 }
 
 assign [class="discord"] 3
+assign [class="deadcells"] 1
 assign [class="Spotify"] 5
 assign [class="spotify"] 5
 assign [class="Steam"] 4
@@ -372,9 +377,8 @@ bindsym $mod+Ctrl+b exec "~/shs/brightness.sh 1"
 for_window [class="^.*"] border pixel 1 
 hide_edge_borders both 
 default_border pixel 1
-#gaps inner 10
-#gaps outer -5
-border_radius 0 
+gaps inner 5
+gaps outer 0
 
 default_floating_border pixel 1 
 # class                 border  backgr. text    indicator child_border
