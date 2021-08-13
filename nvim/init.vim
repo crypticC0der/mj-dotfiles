@@ -12,6 +12,8 @@ set smartindent
 set ignorecase
 set smartcase
 set foldmethod=syntax
+set clipboard=unnamed,unnamedplus
+set foldlevelstart=99
 
 cabbrev bterm bo term
 call plug#begin("~/.config/nvim/plugged")
@@ -50,13 +52,27 @@ let g:airline#extensions#tabline#tab_nr_type = 0 " tab number
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#tabs_label = 'T'
+let g:hardtime_default_on = 1
+let g:hardtime_allow_different_key = 1
+
+nnoremap <Right> :echo "Stop being stupid"<CR>
+vnoremap <Right> :<C-u>echo "Stop being stupid"<CR>
+inoremap <Right> <C-o>:echo "Stop being stupid"<CR>
+nnoremap <Up> :echo "Stop being stupid"<CR>
+vnoremap <Up> :<C-u>echo "Stop being stupid"<CR>
+inoremap <Up> <C-o>:echo "Stop being stupid"<CR>
+nnoremap <Down> :echo "Stop being stupid"<CR>
+vnoremap <Down> :<C-u>echo "Stop being stupid"<CR>
+inoremap <Down> <C-o>:echo "Stop being stupid"<CR>
+nnoremap <Left> :echo "Stop being stupid"<CR>
+vnoremap <Left> :<C-u>echo "Stop being stupid"<CR>
+inoremap <Left> <C-o>:echo "Stop being stupid"<CR>
 
 
 "let g:airline_section_b = airline#section#create(['mode', ' ' ,'branch'] )
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-let g:hardtime_default_on = 1
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 0
 let g:airline_theme = "tokyonight"

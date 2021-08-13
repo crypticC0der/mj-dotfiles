@@ -188,10 +188,10 @@ lwd(){
 histsearch(){
 	case "$1" in
 		-e)
-			history | cut -c 8- | fzf +s -e --tac --height 10 -q "$1"|runcmd;
+			cat ~/.histfile | fzf +s -e --tac --height 10 -q "$1"|runcmd;
 			return 0;;
 		*)
-			echo $(history | cut -c 8- | fzf -e +s --tac --height 10 -q "$1") | writecmd;
+			echo $(cat ~/.histfile | fzf -e +s --tac --height 10 -q "$1") | writecmd;
 			return 0;;
 	esac
 }
@@ -271,7 +271,7 @@ alias tclock="tty-clock -s -c -D -C 6"
 alias lock="i3lock"
 alias st="speedtest"
 alias vimcs="nvim -p *.cs"
-alias selfcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
+alias selfcam="mpv /dev/video0 --profile=low-latency --untimed"
 alias ani-cli="~/shs/ani-cli.sh"
 alias nvc="nvim main.cpp"
 alias gph="git push hub master"
