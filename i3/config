@@ -19,7 +19,7 @@
 exec "unclutter" 
 exec "sh -c '~/shs/all.sh'"
 exec "sh -c '~/shs/xload.sh'"
-exec "picom -I 0.01 -O 0.005 -i .8 -m .8 -f --experimental-backend" 
+exec "picom" 
 exec "setxkbmap gb,gb"
 set $mod Mod4
 exec "feh --bg-fill -zD 14400 ~/wallpapers/*"
