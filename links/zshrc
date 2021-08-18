@@ -188,10 +188,10 @@ lwd(){
 histsearch(){
 	case "$1" in
 		-e)
-			history | cut -c 8- | fzf +s -e --tac --height 10 -q "$1"|runcmd;
+			cat ~/.histfile | fzf +s -e --tac --height 10 -q "$1"|runcmd;
 			return 0;;
 		*)
-			echo $(history | cut -c 8- | fzf -e +s --tac --height 10 -q "$1") | writecmd;
+			echo $(cat ~/.histfile | fzf -e +s --tac --height 10 -q "$1") | writecmd;
 			return 0;;
 	esac
 }
