@@ -13,7 +13,13 @@ window {
 listview {
     padding:                        12px;
     dynamic:                        true;
-    columns:                        9;
+    columns:                        7;
+}
+
+@media (min-width: 1920) {
+	listview{
+		columns: 9;
+	}
 }
 
 @media (min-width: 2400) {

@@ -20,6 +20,13 @@ icon-banner {
 // Vertical padding of the banner image needs to be (height - width)/2
 // There is no way (currently?) to use variables so if the height is changed,
 // it must be updated here as well
+@media (min-width: 1440) {
+    icon-banner {
+        size:                       1920;
+        padding:                    -780 0px;
+    }
+}
+
 @media (min-width: 1920) {
     icon-banner {
         size:                       1920;
