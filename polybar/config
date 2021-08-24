@@ -132,6 +132,7 @@ module-margin-right = 1
 font-0 = "Terminus:size=14;3"
 font-1 = "waffle:size=14;3"
 font-2 = "Noto Sans CJK TC Medium:size=10:Noto Sans CJK TC:style=Medium;0"
+font-3 = "NotoSansMedium:size=10:style=Medium;0"
 
 ; Modules are added to one of the available blocks
 ;   modules-left = cpu ram

@@ -19,11 +19,10 @@
 exec i3-msg "workspace main"
 exec "unclutter" 
 exec "sh -c '~/shs/all.sh'"
-exec "sh -c '~/shs/xload.sh'"
-exec "picom -I 0.01 -O 0.005 -i .8 -m .8 -f --experimental-backend" 
 exec "setxkbmap gb,gb"
 set $mod Mod4
-exec "feh --bg-fill -zD 14400 ~/wallpapers/*"
+exec 'xmodmap -e "clear lock"'
+exec 'xmodmap -e "keysym Caps_Lock = Escape"' 
 bindsym $mod+Shift+w exec "feh --bg-fill -z ~/wallpapers/*"
 focus_follows_mouse no
 exec "/home/mj/.config/polybar/launch.sh"
@@ -69,7 +68,7 @@ bindsym Ctrl+Print exec "~/shs/save.sh"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite -e "tmux"
+bindsym $mod+Return exec "termite -e 'tmux'"
 bindsym $mod+Shift+Return exec termite
 bindsym --release $mod+x exec "kill $(xprop -id $(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}') | awk '/_NET_WM_PID\(CARDINAL\)/{print $NF}')"
 bindsym --release $mod+Shift+x exec "xkill"
@@ -285,15 +284,15 @@ mode "spotify" {
 
 		#keyboard orientateted controls
 		#player controls
-		bindsym Space exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" play-pause
+		bindsym slash exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" play-pause
 		bindsym Up exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" next
 		bindsym Down exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" previous
 
-		bindsym Shift+Space exec playerctl -p spotify play-pause
+		bindsym Shift+slash exec playerctl -p spotify play-pause
 		bindsym Shift+Up exec playerctl -p spotify next
 		bindsym Shift+Down exec playerctl -p spotify previous
 
-		bindsym Ctrl+Space exec playerctl -p qutebrowser mpv play-pause
+		bindsym Ctrl+slash exec playerctl -p qutebrowser mpv play-pause
 		bindsym Ctrl+Up exec playerctl -p qutebrowser mpv next
 		bindsym Ctrl+Down exec playerctl -p qutebrowser mpv previous
 
@@ -355,3 +354,5 @@ client.placeholder      #1a1b26 #1a1b2600 #1a1b26 #1a1b26   #1a1b26
 
 client.background       #00ff0000
 
+exec "picom" 
+exec "feh --bg-fill -zD 14400 ~/wallpapers/*"
