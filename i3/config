@@ -22,7 +22,6 @@ exec "sh -c '~/shs/xload.sh'"
 exec "picom" 
 exec "setxkbmap gb,gb"
 set $mod Mod4
-exec "feh --bg-fill -zD 14400 ~/wallpapers/*"
 exec 'xmodmap -e "clear lock"'
 exec 'xmodmap -e "keysym Caps_Lock = Escape"' 
 bindsym $mod+Shift+w exec "feh --bg-fill -z ~/wallpapers/*"
@@ -392,3 +391,4 @@ client.placeholder      #1a1b26 #1a1b2600 #1a1b26 #1a1b26   #1a1b26
 
 client.background       #00ff0000
 
+exec "feh --bg-fill -zD 14400 ~/wallpapers/*"
