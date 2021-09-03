@@ -6,5 +6,5 @@ i3lock -c 000000ff -S 1 --pass-media-keys --bar-indicator --bar-pos 1080 --bar-d
 		--modif-pos="985:880" --modif-size=40 --modif-color 930100 \
 		--noinput-text="" \
 		--bar-periodic-step 6 --bar-step 15 --bar-max-height 30 --bshl-color=b14800 --keyhl-color=bb1762 --ringver-color 00913c --ringwrong-color="930100" -n \
-		--bar-pos "0:1069" 
+		--bar-pos "0:1080" 
 dunstctl set-paused false
