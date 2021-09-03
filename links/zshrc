@@ -274,6 +274,6 @@ alias vimcs="nvim -p *.cs"
 alias selfcam="mpv /dev/video0 --profile=low-latency --untimed"
 alias ani-cli="~/shs/ani-cli.sh"
 alias nvc="nvim main.cpp"
-alias gph="git push hub master"
-alias gpuh="git pull hub master --force"
+alias gph='git push hub "$(git_current_branch)"'
+alias gpuh='git pull hub "$(git_current_branch)" --force'
 alias rf="rm -rf"
