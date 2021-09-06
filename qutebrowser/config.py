@@ -35,6 +35,7 @@ config.bind("z","hint links userscript ~/shs/qtzo.sh")
 c.url.searchengines ={
         "DEFAULT": "https://duckduckgo.com/?q={}",
         "a": "https://wiki.archlinux.org/?search={}",
+        "m": "https://mangadex.org/titles?q={}",
         "c":"https://www.crunchyroll.com/search?from=&q={}",
         "y":"https://www.youtube.com/results?search_query={}",
         "tr":"https://translate.google.com/?source=osdd&sl=auto&tl=auto&text={}&op=translate",
