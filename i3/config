@@ -289,6 +289,7 @@ mode "launcher" {
 		bindsym o exec libreoffice
 		bindsym r exec --no-startup-id obs
 		bindsym z exec ~/shs/zopen.sh
+		bindsym b exec thunderbird
 
 		#exiters
 		bindsym q kill
