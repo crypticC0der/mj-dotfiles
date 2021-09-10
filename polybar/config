@@ -141,11 +141,7 @@ font-3 = "NotoSansMedium:size=10:style=Medium;0"
 
 modules-left = title sep cpu memory filesystem
 modules-center = playing sep date
-<<<<<<< HEAD
 modules-right = wired-network sep volume temperature sep i3 
-=======
-modules-right = network temperature sep volume battery sep i3 
->>>>>>> 02c6c83 (updated rofi to 1.17)
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
