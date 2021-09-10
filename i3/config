@@ -282,7 +282,6 @@ mode "launcher" {
 		bindsym c exec discord
 		bindsym g exec steam
 		bindsym m exec minecraft-launcher
-		bindsym b exec thunderbird
 		bindsym u exec unityhub
 		bindsym e exec gimp
 		bindsym v exec "VBoxManage startvm 'bunt'"
