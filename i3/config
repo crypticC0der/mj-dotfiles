@@ -245,6 +245,7 @@ mode "launcher" {
 		bindsym e exec gimp
 		bindsym o exec libreoffice
 		bindsym z exec ~/shs/zopen.sh
+		bindsym b exec thunderbird
 
 		#exiters
 		bindsym q kill

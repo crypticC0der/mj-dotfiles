@@ -6,6 +6,16 @@ configuration {
 
 @import "launcher"
 
+* {
+    background-color:               transparent;
+    background:                     #1a1b26;
+    background-transparent:         #1a1b26A0;
+    text-color:                     #a9b1d6;
+    primary:                        #7aa2f7;
+    secondary:                      #ad8ee6;
+    urgent:                         #f7768e;
+}
+
 window {
     height:                         360;
 }
@@ -35,11 +45,12 @@ listview {
 }
 
 element-icon {
-    padding:                        0px -40px;
+    padding:                        0px 0px;
     border:                         4px 4px solid 4px 4px;
     border-color:                   transparent;
     border-radius:                  16;
     size:                           240;
+	width:							160px;
 }
 
 element-icon selected {
@@ -48,6 +59,6 @@ element-icon selected {
 
 element-text {
     horizontal-align:               0.5;
-    horizontal-align:               0.5;
+    vertical-align:               0.5;
     width:                          160px;
 }
