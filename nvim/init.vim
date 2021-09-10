@@ -11,6 +11,7 @@ set autoindent
 set smartindent
 set ignorecase
 set smartcase
+"set nohlsearch
 set foldmethod=syntax
 set clipboard=unnamed,unnamedplus
 set foldlevelstart=99
@@ -108,6 +109,7 @@ nmap <C-s> :split<CR>
 nmap <C-v> :vsplit<CR>
 nmap <C-t> :tab new<CR> 
 nmap <C-u> :set relativenumber!<CR> :set number! <CR>
+nmap <C-_> :noh<CR>
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
