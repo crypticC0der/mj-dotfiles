@@ -277,3 +277,6 @@ alias nvc="nvim main.cpp"
 alias gph='git push hub "$(git_current_branch)"'
 alias gpuh='git pull hub "$(git_current_branch)" --force'
 alias rf="rm -rf"
+alias lt="exa -lrs time"
+alias lat="exa -lars time"
+alias ytdl="youtube-dl"

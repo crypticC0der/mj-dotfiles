@@ -61,7 +61,7 @@ bindsym XF86AudioMute exec "pactl set-sink-mute $(~/shs/sink.sh) toggle"
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 #
-bindsym Print exec "maim -s -u | xclip -selection clipboard -t image/png -i"
+bindsym $mod+y exec "maim -s -u | xclip -selection clipboard -t image/png -i"
 bindsym Shift+Print exec "maim -s -u -d 4 | xclip -selection clipboard -t image/png -i"
 bindsym Ctrl+Print exec "~/shs/save.sh"
 
@@ -284,7 +284,7 @@ mode "launcher" {
 		bindsym m exec minecraft-launcher
 		bindsym u exec unityhub
 		bindsym e exec gimp
-		bindsym v exec "VBoxManage startvm 'bunt'"
+		bindsym x exec "virtualbox"
 		bindsym o exec libreoffice
 		bindsym r exec --no-startup-id obs
 		bindsym z exec ~/shs/zopen.sh
@@ -353,12 +353,13 @@ mode "Dead Cells"{
 
 assign [class="discord"] 3
 assign [class="deadcells"] 1
-assign [class="Spotify"] 5
-assign [class="spotify"] 5
+assign [class="Spotify"] 2
+assign [class="spotify"] 2
 assign [class="Steam"] 4
+assign [class="Thunderbird"] 4
 assign [class="mpv"] 1
-assign [class="GLava"] 5
-for_window [class = "Spotify"] move to workspace "5" 
+assign [class="GLava"] 2
+for_window [class = "Spotify"] move to workspace "2" 
 bindsym $mod+t mode "launcher"
 bindsym $mod+r mode "resize"
 bindsym $mod+Delete mode "Dead Cells"

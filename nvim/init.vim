@@ -1,4 +1,4 @@
-set guicursor=
+set tildeop
 set number
 set relativenumber
 set nocompatible
@@ -19,6 +19,7 @@ set foldlevelstart=99
 cabbrev bterm bo term
 call plug#begin("~/.config/nvim/plugged")
 Plug 'junegunn/fzf.vim'
+Plug 'https://github.com/simnalamburt/vim-mundo.git'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/tagbar'
@@ -68,11 +69,32 @@ inoremap <Down> <C-o>:echo "Stop being stupid"<CR>
 nnoremap <Left> :echo "Stop being stupid"<CR>
 vnoremap <Left> :<C-u>echo "Stop being stupid"<CR>
 inoremap <Left> <C-o>:echo "Stop being stupid"<CR>
+nnoremap <F5> :MundoToggle<CR>
+
+if (&tildeop)
+  nmap gcw guw~l
+  nmap gcW guW~l
+  nmap gciw guiw~l
+  nmap gciW guiW~l
+  nmap gcis guis~l
+  nmap gc$ gu$~l
+  nmap gcgc guu~l
+  nmap gcc guu~l
+  vmap gc gu~l
+else
+  nmap gcw guw~h
+  nmap gcW guW~h
+  nmap gciw guiw~h
+  nmap gciW guiW~h
+  nmap gcis guis~h
+  nmap gc$ gu$~h
+  nmap gcgc guu~h
+  nmap gcc guu~h
+  vmap gc gu~h
+endif
 
 
 "let g:airline_section_b = airline#section#create(['mode', ' ' ,'branch'] )
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 0
@@ -102,7 +124,7 @@ nmap <Enter> o<Esc>
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nmap <F8> :TagbarToggle<CR>
-nmap <C-a> :MarkdownPreviewToggle<CR>
+nmap <C-d> :MarkdownPreviewToggle<CR>
 nmap ; :Files<CR>
 map <C-o> :NERDTreeToggle<CR>
 nmap <C-s> :split<CR>
@@ -122,4 +144,7 @@ let g:airline_symbols.notexists='?'
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 autocmd BufWinEnter * silent NERDTreeMirror
-
+augroup RestoreCursorShapeOnExit
+    autocmd!
+    autocmd VimLeave * set guicursor=a:ver20
+augroup END
