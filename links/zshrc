@@ -160,7 +160,8 @@ n ()
 }
 
 #exports
-export MANPAGER="nvim -c 'set ft=man' -"
+#export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER="less"
 export EDITOR=nvim
 
 
@@ -267,7 +268,7 @@ alias ocd="\cd"
 alias grep="grep --color"
 alias dropcache="sync; sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'"
 alias plan="rm /tmp/plan; nvim /tmp/plan"
-alias tclock="tty-clock -s -c -D -C 6"
+alias tclock="tty-clock -c -D -C 4"
 alias lock="i3lock"
 alias st="speedtest"
 alias vimcs="nvim -p *.cs"

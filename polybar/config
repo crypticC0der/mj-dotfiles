@@ -141,7 +141,7 @@ font-3 = "NotoSansMedium:size=10:style=Medium;0"
 
 modules-left = title sep cpu memory filesystem
 modules-center = playing sep date
-modules-right = network temperature sep volume battery sep i3 
+modules-right = network sep temperature volume battery sep i3 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
