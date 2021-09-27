@@ -37,6 +37,24 @@ icon-title {
     size:                           600;
 }
 
+@media (min-width: 1440) {
+	icon-title {
+		padding:						0px 0px 0px 58%;
+	}
+	icon-banner{
+		padding:						0px 0px 0px -25%;
+	}
+}
+
+@media (min-width: 1920) {
+	icon-title {
+		padding:						0px 0px 0px 68%;
+	}
+	icon-banner{
+		padding:						0px 0px 0px 0%;
+	}
+}
+
 horizontal-box {
     children:                       [dummy, vertical-box, dummy];
     expand:                         false;

@@ -60,7 +60,7 @@ bindsym XF86AudioMute exec "pactl set-sink-mute $(~/shs/sink.sh) toggle"
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 #
-bindsym Print exec "maim -s -u | xclip -selection clipboard -t image/png -i"
+bindsym $mod+y exec "maim -s -u | xclip -selection clipboard -t image/png -i"
 bindsym Shift+Print exec "maim -s -u -d 4 | xclip -selection clipboard -t image/png -i"
 bindsym Ctrl+Print exec "~/shs/save.sh"
 
