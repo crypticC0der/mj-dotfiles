@@ -275,7 +275,7 @@ mode "launcher" {
 
 		#applications
 		bindsym p exec --no-startup-id spotify
-		bindsym v exec glava
+		bindsym v exec "pkill glava; glava -d"
 		bindsym t exec alacritty
 		bindsym i exec qutebrowser
 		bindsym shift+i exec qutebrowser ":open -p"
@@ -353,12 +353,11 @@ mode "Dead Cells"{
 
 assign [class="discord"] 3
 assign [class="deadcells"] 1
-assign [class="Spotify"] 2
-assign [class="spotify"] 2
+assign [class="Spotify"] 5
+assign [class="spotify"] 5
 assign [class="Steam"] 4
 assign [class="Thunderbird"] 4
 assign [class="mpv"] 1
-assign [class="GLava"] 2
 for_window [class = "Spotify"] move to workspace "2" 
 bindsym $mod+t mode "launcher"
 bindsym $mod+r mode "resize"
