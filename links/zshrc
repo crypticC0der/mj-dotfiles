@@ -160,7 +160,8 @@ n ()
 }
 
 #exports
-export MANPAGER="nvim -c 'set ft=man' -"
+#export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER="less"
 export EDITOR=nvim
 
 

@@ -22,8 +22,6 @@ exec "sh -c '~/shs/xload.sh'"
 exec "picom" 
 exec "setxkbmap gb,gb"
 set $mod Mod4
-exec 'xmodmap -e "clear lock"'
-exec 'xmodmap -e "keysym Caps_Lock = Escape"' 
 bindsym $mod+Shift+w exec "feh --bg-fill -z ~/wallpapers/*"
 focus_follows_mouse no
 exec "/home/mj/.config/polybar/launch.sh"
@@ -61,7 +59,7 @@ bindsym XF86AudioMute exec "pactl set-sink-mute $(~/shs/sink.sh) toggle"
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 #
-bindsym $mod+y exec "maim -s -u | xclip -selection clipboard -t image/png -i"
+bindsym Print exec "maim -s -u | xclip -selection clipboard -t image/png -i"
 bindsym Shift+Print exec "maim -s -u -d 4 | xclip -selection clipboard -t image/png -i"
 bindsym Ctrl+Print exec "~/shs/save.sh"
 
@@ -73,6 +71,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec termite
 bindsym --release $mod+x exec "kill $(xprop -id $(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}') | awk '/_NET_WM_PID\(CARDINAL\)/{print $NF}')"
 bindsym --release $mod+Shift+x exec "xkill"
+bindsym $mod+u exec "sh -c 'qutebrowser $(cat ~/Documents/University/classes)'"
 bindsym $mod+i exec qutebrowser
 bindsym $mod+Ctrl+i exec brave
 bindsym $mod+shift+i exec qutebrowser ":open -p"
@@ -99,10 +98,10 @@ bindsym $mod+l exec "~/.config/i3/move-cursor.sh focus right"
 #bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 200px
+bindsym $mod+Shift+j move down 200px
+bindsym $mod+Shift+k move up 200px
+bindsym $mod+Shift+l move right 200px
 
 # alternatively, you can use the cursor keys:
 #bindsym $mod+Shift+Left move left
@@ -282,6 +281,7 @@ mode "launcher" {
 		bindsym c exec discord
 		bindsym g exec steam
 		bindsym m exec minecraft-launcher
+		bindsym Shift+m exec multimc
 		bindsym u exec unityhub
 		bindsym e exec gimp
 		bindsym x exec "virtualbox"
@@ -358,7 +358,9 @@ assign [class="spotify"] 5
 assign [class="Steam"] 4
 assign [class="Thunderbird"] 4
 assign [class="mpv"] 1
-for_window [class = "Spotify"] move to workspace "2" 
+for_window [class = "Spotify"] move to workspace "5"
+for_window [class="(?i)unity"] floating disable
+for_window [window_type="dialog"] floating enable
 bindsym $mod+t mode "launcher"
 bindsym $mod+r mode "resize"
 bindsym $mod+Delete mode "Dead Cells"
