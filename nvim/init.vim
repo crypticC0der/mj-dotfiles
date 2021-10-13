@@ -1,4 +1,3 @@
-set tildeop
 set number
 set relativenumber
 set nocompatible
@@ -18,25 +17,27 @@ set foldlevelstart=99
 
 cabbrev bterm bo term
 call plug#begin("~/.config/nvim/plugged")
-Plug 'junegunn/fzf.vim'
-Plug 'https://github.com/simnalamburt/vim-mundo.git'
+"Plug 'junegunn/fzf.vim'
+Plug 'simnalamburt/vim-mundo'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'michaeljsmith/vim-indent-object'
 Plug 'preservim/tagbar'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'takac/vim-hardtime'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'nvim-lua/completion-nvim'
+Plug 'ms-jpq/coq_nvim', {'branch':'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'neovim/nvim-lspconfig'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'scrooloose/nerdtree'
 Plug 'PhilRunninger/nerdtree-buffer-ops'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-surround'
 Plug 'edkolev/tmuxline.vim'
 call plug#end()
 if !exists('g:airline_symbols')
@@ -107,8 +108,9 @@ lua << EOF
 require'lspinstall'.setup()
 
 local servers = require'lspinstall'.installed_servers()
+local coq = require "coq"
 for _, server in pairs(servers) do
-	require'lspconfig'[server].setup{on_attach=require'completion'.on_attach}
+	require'lspconfig'[server].setup{}
 end
 
 
@@ -126,12 +128,10 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nmap <F8> :TagbarToggle<CR>
 nmap <C-d> :MarkdownPreviewToggle<CR>
-nmap ; :Files<CR>
 map <C-o> :NERDTreeToggle<CR>
 nmap <C-s> :split<CR>
 nmap <C-v> :vsplit<CR>
 nmap <C-t> :tab new<CR> 
-nmap <C-u> :set relativenumber!<CR> :set number! <CR>
 nmap <C-_> :noh<CR>
 
 " Set completeopt to have a better completion experience
@@ -141,11 +141,13 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 let g:airline_symbols.dirty ='!'
 let g:airline_symbols.notexists='?'
+let g:coq_settings = { 'display.icons.mode': 'none', "display.ghost_text.enabled" : v:false ,"display.pum.fast_close" : v:false }
+COQnow -s
 
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
+   \ quit | endif
 autocmd BufWinEnter * silent NERDTreeMirror
 augroup RestoreCursorShapeOnExit
-    autocmd!
-    autocmd VimLeave * set guicursor=a:ver20
+   autocmd!
+   autocmd VimLeave * set guicursor=a:ver20
 augroup END
