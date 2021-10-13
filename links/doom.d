@@ -1,0 +1,1 @@
+/home/mj/.doom.d
