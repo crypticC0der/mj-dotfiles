@@ -1,8 +1,1 @@
-total 32
-drwxr-xr-x  3 mj mj     4096 Oct 13 12:26 .
-drwx------ 92 mj mj     4096 Oct 13 12:22 ..
--rw-r--r--  1 mj mj     4218 Sep 11 00:26 bashrc
-lrwxrwxrwx  1 mj mj       16 Oct 13 12:21 doom.d -> /home/mj/.doom.d
--rw-r--r--  1 mj mj        0 Oct 13 12:26 lout
-drwxr-xr-x  2 mj will-p 4096 Oct 12 00:00 shs
--rw-r--r--  1 mj mj     8333 Oct 13 01:36 zshrc
+lrwxrwxrwx 1 mj mj 16 Oct 13 12:21 doom.d -> /home/mj/.doom.d
