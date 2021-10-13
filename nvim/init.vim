@@ -18,7 +18,7 @@ set foldlevelstart=99
 cabbrev bterm bo term
 call plug#begin("~/.config/nvim/plugged")
 "Plug 'junegunn/fzf.vim'
-Plug 'https://github.com/simnalamburt/vim-mundo.git'
+Plug 'simnalamburt/vim-mundo.git'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'

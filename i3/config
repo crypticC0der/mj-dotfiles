@@ -374,7 +374,7 @@ bindsym $mod+Shift+z exec "sudo python ~/.g213.py -x 15000"
 
 bindsym $mod+p exec "~/shs/spot.sh"
 #bindsym $mod+g exec "~/shs/pyspot.sh add"
-bindsym $mod+e exec "~/shs/games.sh"
+bindsym $mod+e exec "sh -c '~/shs/games.sh'"
 bindsym $mod+Shift+b exec "~/shs/brightness.sh 0.5"
 bindsym $mod+Ctrl+b exec "~/shs/brightness.sh 1"
 for_window [class="^.*"] border pixel 1 
