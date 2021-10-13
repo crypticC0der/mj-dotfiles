@@ -93,6 +93,7 @@ else
   vmap gc gu~h
 endif
 
+set t_Co=256
 
 "let g:airline_section_b = airline#section#create(['mode', ' ' ,'branch'] )
 set termguicolors
