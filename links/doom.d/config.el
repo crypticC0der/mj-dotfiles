@@ -38,22 +38,25 @@
 (setq global-whitespace-mode `t)
 (setq whitespace-style `trailing)
 (setq whitespace-mode `t)
-(minimap-mode)
+(global-evil-motion-trainer-mode 1)
+(httpd-start)
+(load! "slack.el")
+(setq slack-render-image-p `t)
+(imp-set-user-filter markdown-html)
+(load-file "~/.emacs.d/.local/straight/repos/discord-emacs.el/discord-emacs.el")
+(discord-emacs-run "384815451978334208")
 
-(map!
- :desc "toggle treemacs"
+
+(map! :desc "function keys"
+      "<f5>" #'minimap-mode
       "<f8>" #'treemacs)
 
-(map! :desc "move window"
-     "M-k" #'window-move-up
-     "M-j" #'window-move-down
-     "M-l" #'window-move-right
-     "M-h" #'window-move-left)
 (map! :desc "move cursor"
      "C-k" #'evil-window-up
      "C-j" #'evil-window-down
      "C-l" #'evil-window-right
      "C-h" #'evil-window-left)
+
 (map! :desc "resize"
      "C-S-k" #'evil-window-increase-height
      "C-S-j" #'evil-window-decrease-height

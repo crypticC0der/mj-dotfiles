@@ -481,8 +481,6 @@ shell:
   program: /bin/bash
   args:
     - -l 
-    - -c
-    - "tmux" 
 
 # Startup directory
 #
