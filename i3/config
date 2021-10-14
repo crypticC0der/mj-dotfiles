@@ -67,8 +67,9 @@ bindsym Ctrl+Print exec "~/shs/save.sh"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec "termite -e 'tmux'"
+bindsym $mod+Return exec termite
 bindsym $mod+Shift+Return exec termite
+bindsym $mod+space exec "emacsclient -c"
 bindsym --release $mod+x exec "kill $(xprop -id $(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}') | awk '/_NET_WM_PID\(CARDINAL\)/{print $NF}')"
 bindsym --release $mod+Shift+x exec "xkill"
 bindsym $mod+u exec "sh -c 'qutebrowser $(cat ~/Documents/University/classes)'"
@@ -156,9 +157,6 @@ bindsym $mod+f fullscreen toggle
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
 # focus the parent container
 bindsym $mod+a focus parent
 focus_wrapping no
@@ -232,12 +230,13 @@ mode "launcher" {
 		bindsym $mod+v split v
 
 		# letters left:
-		# J K X H N Y
+		# A D F N S U V W Y
 
 		#applications
 		bindsym p exec --no-startup-id spotify
-		bindsym t exec termite -e "tmux"
+		bindsym t exec termite
 		bindsym v exec "pkill glava; glava -d"
+		bindsym space exec "emacsclient -c"
 		bindsym i exec qutebrowser
 		bindsym shift+i exec qutebrowser ":open -p"
 		bindsym c exec discord

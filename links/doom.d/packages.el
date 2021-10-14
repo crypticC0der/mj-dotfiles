@@ -14,7 +14,15 @@
 ;; https://github.com/raxod502/straight.el#the-recipe-format
 ;(package! another-package
 ;  :recipe (:host github :repo "username/repo"))
-
+(package! impatient-mode)
+(package! alert)
+(package! slack)
+(package! helm-slack :recipe
+  (:host github :repo "yuya373/helm-slack"))
+(package! evil-motion-trainer :recipe
+  (:host github :repo "martinbaillie/evil-motion-trainer"))
+(package! discord-emacs :recipe
+  (:host github :repo "simmsb/discord-emacs.el"))
 
 ;; If the package you are trying to install does not contain a PACKAGENAME.el
 ;; file, or is located in a subdirectory of the repo, you'll need to specify
