@@ -329,34 +329,11 @@ mode "spotify" {
 		bindsym $mod+s mode "default"
 }
 
-<<<<<<< HEAD
-=======
-mode "Dead Cells"{
-		bindsym 1 --release exec "xdotool key 5; xdotool key 2"	
-
-		bindsym $mod+r mode "resize"
-		bindsym Escape mode "default"
-		bindsym $mod+t mode "launcher"
-		bindsym $mod+s mode "default"
-}
-
-assign [class="discord"] 3
-assign [class="deadcells"] 1
-assign [class="Spotify"] 5
-assign [class="spotify"] 5
-assign [class="Steam"] 4
-assign [class="Thunderbird"] 4
-assign [class="mpv"] 1
-for_window [class = "Spotify"] move to workspace "5"
 for_window [class="(?i)unity"] floating disable
 for_window [window_type="dialog"] floating enable
->>>>>>> 1081d36a1b46693fc400c4f2b387002415a578e2
 bindsym $mod+t mode "launcher"
 bindsym $mod+r mode "resize"
-bindsym $mod+Delete mode "Dead Cells"
 bindsym $mod+s mode "spotify"
-bindsym $mod+Shift+g exec "~/shs/xgamer.sh"
-bindsym $mod+Ctrl+g exec "~/shs/xload.sh"
 bindsym $mod+c exec "sync; sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'"
 
 bindsym $mod+p exec "~/shs/spot.sh"
