@@ -20,8 +20,8 @@ exec "unclutter"
 exec "sh -c '~/shs/all.sh'"
 exec "sh -c '~/shs/xload.sh'"
 exec "picom" 
-exec "setxkbmap gb,gb"
 set $mod Mod4
+exec "sh -c 'setxkbmap \"gb,gb\" -option \"caps:swapescape\"'"
 bindsym $mod+Shift+w exec "feh --bg-fill -z ~/wallpapers/*"
 focus_follows_mouse no
 exec "/home/mj/.config/polybar/launch.sh"
@@ -38,7 +38,7 @@ bindsym XF86AudioStop exec playerctl -i "chromium.instance$(pgrep Discord | head
 bindsym XF86AudioNext exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" next
 bindsym XF86AudioPrev exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" previous
 
-bindsym ShiftXF86AudioPlay exec playerctl -p spotify play-pause 
+bindsym Shift+XF86AudioPlay exec playerctl -p spotify play-pause 
 bindsym Shift+XF86AudioStop exec playerctl -p spotify stop
 bindsym Shift+XF86AudioNext exec playerctl -p spotify next
 bindsym Shift+XF86AudioPrev exec playerctl -p spotify previous
@@ -65,6 +65,12 @@ bindsym Ctrl+Print exec "~/shs/save.sh"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# dunst
+bindsym Ctrl+space exec "dunstctl close"
+bindsym Ctrl+grave exec "dunstctl history-pop"
+bindsym Ctrl+Shift+space exec "dunstctl action"
+
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -305,7 +311,7 @@ mode "spotify" {
 		bindsym XF86AudioNext exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" next
 		bindsym XF86AudioPrev exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" previous
 
-		bindsym ShiftXF86AudioPlay exec playerctl -p spotify play-pause
+		bindsym Shift+XF86AudioPlay exec playerctl -p spotify play-pause
 		bindsym Shift+XF86AudioStop exec playerctl -p spotify stop
 		bindsym Shift+XF86AudioNext exec playerctl -p spotify next
 		bindsym Shift+XF86AudioPrev exec playerctl -p spotify previous
@@ -354,25 +360,25 @@ assign [class="discord"] 3
 assign [class="deadcells"] 1
 assign [class="Spotify"] 5
 assign [class="spotify"] 5
-assign [class="Steam"] 4
+assign [title="Steam"] 4
 assign [class="Thunderbird"] 4
 assign [class="mpv"] 1
 for_window [class = "Spotify"] move to workspace "5"
 for_window [class="(?i)unity"] floating disable
 for_window [window_type="dialog"] floating enable
-bindsym $mod+t mode "launcher"
-bindsym $mod+r mode "resize"
 bindsym $mod+Delete mode "Dead Cells"
-bindsym $mod+s mode "spotify"
 bindsym $mod+Shift+g exec "~/shs/xgamer.sh"
 bindsym $mod+Ctrl+g exec "~/shs/xload.sh"
 bindsym $mod+c exec "sync; sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'"
+bindsym Mod1+Tab exec "~/.config/rofi/scripts/rofi-wrapper.sh windows"
 
 bindsym $mod+z exec "sudo python ~/.g213.py -c 6060ff ff60df ffffff ff60df 6060ff"
 bindsym $mod+Shift+z exec "sudo python ~/.g213.py -x 15000"
 
 bindsym $mod+p exec "~/shs/spot.sh"
 #bindsym $mod+g exec "~/shs/pyspot.sh add"
+bindsym $mod+s mode "spotify"
+bindsym $mod+t mode "launcher"
 bindsym $mod+e exec "sh -c '~/shs/games.sh'"
 bindsym $mod+Shift+b exec "~/shs/brightness.sh 0.5"
 bindsym $mod+Ctrl+b exec "~/shs/brightness.sh 1"

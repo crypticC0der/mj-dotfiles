@@ -4,6 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/mj/.config/oh-my-zsh"
 export PATH=$HOME/.emacs.d/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -267,7 +268,7 @@ alias gn="goodnight"
 alias cd="fzcd"
 alias ocd="\cd"
 alias grep="grep --color"
-alias dropcache="sync; sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'"
+alias dropcache="sync; sudo sh -c 'echo 2 > /proc/sys/vm/drop_caches'"
 alias plan="rm /tmp/plan; nvim /tmp/plan"
 alias tclock="tty-clock -s -c -D -C 6"
 alias lock="i3lock"
@@ -282,3 +283,4 @@ alias rf="rm -rf"
 alias lt="exa -lrs time"
 alias lat="exa -lars time"
 alias ytdl="youtube-dl"
+alias peaclock="peaclock --config-dir ~/.config/peaclock"

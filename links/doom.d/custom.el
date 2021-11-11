@@ -3,11 +3,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(doom-modeline-buffer-encoding t)
- '(doom-modeline-indent-info t)
- '(doom-modeline-major-mode-icon t)
+ '(org-agenda-files '("~/org/note.org"))
  '(package-selected-packages
-   '(slack alert async ghub powerline-evil jammer no-spam hardcore-mode impatient-mode powerline markdown-preview-mode)))
+   '(pdf-tools gitconfig grip-mode lsp-pyright undo-tree xkcd doom-themes reddigg md4rd slack powerline-evil no-spam markdown-preview-mode jammer impatient-mode hardcore-mode ghub async))
+ '(pdf-tools-enabled-hook '(pdf-view-midnight-minor-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

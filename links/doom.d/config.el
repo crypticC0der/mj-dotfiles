@@ -3,7 +3,6 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "MJ Ponsonby"
@@ -38,24 +37,62 @@
 (setq global-whitespace-mode `t)
 (setq whitespace-style `trailing)
 (setq whitespace-mode `t)
+(setq evil-motion-trainer-threshold 5)
 (global-evil-motion-trainer-mode 1)
-(httpd-start)
-(load! "slack.el")
+(load! "~/.doom.d/slack.el")
+(global-undo-tree-mode)
 (setq slack-render-image-p `t)
-(imp-set-user-filter markdown-html)
 (load-file "~/.emacs.d/.local/straight/repos/discord-emacs.el/discord-emacs.el")
+(load-file "~/.doom.d/email.el")
+(setq doom-modeline-major-mode-icon t)
+(setq doom-modeline-buffer-state-icon t)
+(setq doom-modeline-enable-word-count t)
+(setq doom-modeline-indent-info t)
+(setq doom-modeline-buffer-encoding t)
+(setq doom-modeline-lsp t)
+(setq doom-modeline-modal-icon nil)
 (discord-emacs-run "384815451978334208")
+(setq-default major-mode 'org-mode)
 
+(after! org
+  ;; Import ox-latex to get org-latex-classes and other funcitonality
+  ;; for exporting to LaTeX from org
+  (use-package! ox-latex
+    :init
+    ;; code here will run immediately
+    :config
+    ;; code here will run after the package is loaded
+    (setq org-latex-pdf-process
+          '("pdflatex -interaction nonstopmode -output-directory %o %f"
+            "bibtex %b"
+            "pdflatex -interaction nonstopmode -output-directory %o %f"
+            "pdflatex -interaction nonstopmode -output-directory %o %f"))
+    (setq org-latex-with-hyperref nil) ;; stop org adding hypersetup{author..} to latex export
+    ;; (setq org-latex-prefer-user-labels t)
+
+    ;; deleted unwanted file extensions after latexMK
+    (setq org-latex-logfiles-extensions
+          (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf" "acn" "acr" "alg" "glg" "gls" "ist")))
+
+    (unless (boundp 'org-latex-classes)
+      (setq org-latex-classes nil)))
+)
+;;;###autoload
+(defun mk-project (type name)
+    (interactive "*sEnter project type: \nsEnter project name: ")
+    (cd "~/Documents/Programming")
+    (cd type)
+    (mkdir name)
+    (cd name))
+
+(defun conf (item)
+  (interactive "*sWhat are you configuring: ")
+  (cd "~/.config")
+  (evil-edit item))
 
 (map! :desc "function keys"
       "<f5>" #'minimap-mode
       "<f8>" #'treemacs)
-
-(map! :desc "move cursor"
-     "C-k" #'evil-window-up
-     "C-j" #'evil-window-down
-     "C-l" #'evil-window-right
-     "C-h" #'evil-window-left)
 
 (map! :desc "resize"
      "C-S-k" #'evil-window-increase-height

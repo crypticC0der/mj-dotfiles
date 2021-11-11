@@ -16,3 +16,4 @@ configuration {
     urgent:                         #f7768e;
 }
 
+/* @theme "/usr/share/rofi/themes/android_notification.rasi" */

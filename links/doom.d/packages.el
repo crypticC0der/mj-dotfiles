@@ -21,9 +21,16 @@
   (:host github :repo "yuya373/helm-slack"))
 (package! evil-motion-trainer :recipe
   (:host github :repo "martinbaillie/evil-motion-trainer"))
+(package! lsp-pyright)
+(package! undo-tree)
+(package! lsp-pyright)
 (package! discord-emacs :recipe
   (:host github :repo "simmsb/discord-emacs.el"))
-
+(package! reddigg)
+(package! unity :recipe
+  (:host github :repo "elizagamedev/unity.el"))
+(add-hook 'after-init-hook #'unity-build-code-shim)
+(add-hook 'after-init-hook #'unity-setup)
 ;; If the package you are trying to install does not contain a PACKAGENAME.el
 ;; file, or is located in a subdirectory of the repo, you'll need to specify
 ;; `:files' in the `:recipe':
