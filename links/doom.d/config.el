@@ -42,7 +42,6 @@
 (httpd-start)
 (load! "slack.el")
 (setq slack-render-image-p `t)
-(imp-set-user-filter markdown-html)
 (load-file "~/.emacs.d/.local/straight/repos/discord-emacs.el/discord-emacs.el")
 (discord-emacs-run "384815451978334208")
 
