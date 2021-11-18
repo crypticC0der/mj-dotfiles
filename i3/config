@@ -80,7 +80,7 @@ bindsym --release $mod+x exec "kill $(xprop -id $(xprop -root | awk '/_NET_ACTIV
 bindsym --release $mod+Shift+x exec "xkill"
 bindsym $mod+u exec "sh -c 'qutebrowser $(cat ~/Documents/University/classes)'"
 bindsym $mod+i exec qutebrowser
-bindsym $mod+Ctrl+i exec brave
+bindsym $mod+Ctrl+i exec firefox
 bindsym $mod+shift+i exec qutebrowser ":open -p"
 bindsym $mod+o exec "~/shs/lock.sh"
 bindsym $mod+Shift+o exec "~/shs/gn.sh"
