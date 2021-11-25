@@ -1,1 +1,1 @@
-i3-msg '[class="discord"] focus'
+wmctrl -r "$1" -b add,demands_attention

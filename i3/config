@@ -21,8 +21,8 @@ exec "sh -c '~/shs/all.sh'"
 exec "sh -c '~/shs/xload.sh'"
 exec "picom" 
 set $mod Mod4
-exec "sh -c 'setxkbmap \"gb,gb\" -option \"caps:swapescape\"'"
-bindsym $mod+Shift+w exec "feh --bg-fill -z ~/wallpapers/*"
+exec "sh -c 'setxkbmap \"us,us\" -option \"caps:swapescape\"'"
+bindsym $mod+b exec "feh --bg-fill -z ~/wallpapers/*"
 focus_follows_mouse no
 exec "/home/mj/.config/polybar/launch.sh"
 exec "dunst"
@@ -32,7 +32,8 @@ exec "~/shs/lock.sh"
 bindsym $mod+Shift+p exec "/home/mj/.config/polybar/launch.sh"
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:Hack 9 
+
 bindsym XF86AudioPlay exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" play-pause
 bindsym XF86AudioStop exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" stop
 bindsym XF86AudioNext exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" next
@@ -67,14 +68,13 @@ bindsym Ctrl+Print exec "~/shs/save.sh"
 floating_modifier $mod
 
 # dunst
-bindsym Ctrl+space exec "dunstctl close"
-bindsym Ctrl+grave exec "dunstctl history-pop"
-bindsym Ctrl+Shift+space exec "dunstctl action"
+bindsym $mod+n exec "dunstctl close"
+bindsym $mod+Ctrl+n exec "dunstctl history-pop"
+bindsym $mod+shift+n exec "dunstctl action"
 
 
 # start a terminal
-bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+Return exec termite
+bindsym $mod+Return exec st
 bindsym $mod+space exec "emacsclient -c"
 bindsym --release $mod+x exec "kill $(xprop -id $(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}') | awk '/_NET_WM_PID\(CARDINAL\)/{print $NF}')"
 bindsym --release $mod+Shift+x exec "xkill"
@@ -161,9 +161,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
+bindsym $mod+w layout tabbed
+bindsym $mod+Shift+w layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -279,7 +278,7 @@ mode "launcher" {
 		#applications
 		bindsym p exec --no-startup-id spotify
 		bindsym v exec "pkill glava; glava -d"
-		bindsym t exec alacritty
+		bindsym t exec st
 		bindsym space exec "emacsclient -c"
 		bindsym i exec qutebrowser
 		bindsym shift+i exec qutebrowser ":open -p"
@@ -328,16 +327,40 @@ mode "spotify" {
 		bindsym XF86AudioLowerVolume exec amixer set Master 5%- #decrease sound volume
 		bindsym XF86AudioMute exec amixer set Master toggle # mute sound
 
-		bindsym y exec "~/shs/pyspot.sh search playlist"
+		#keyboard orientateted controls
+		#player controls
+		bindsym slash exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" play-pause
+		bindsym k exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" next
+		bindsym j exec playerctl -i "chromium.instance$(pgrep Discord | head -1)" previous
+
+		bindsym Shift+slash exec playerctl -p spotify play-pause
+		bindsym Shift+k exec playerctl -p spotify next
+		bindsym Shift+j exec playerctl -p spotify previous
+
+		bindsym Ctrl+slash exec playerctl -p qutebrowser mpv play-pause
+		bindsym Ctrl+k exec playerctl -p qutebrowser mpv next
+		bindsym Ctrl+j exec playerctl -p qutebrowser mpv previous
+
+		#volume controls
+		bindsym 0 exec amixer set Master 5%+ #increase sound volume
+		bindsym 9 exec amixer set Master 5%- #decrease sound volume
+		bindsym / exec amixer set Master toggle # mute sound
+
+		bindsym shift+0 exec "pactl set-sink-volume $(~/shs/sink.sh) +5% " 
+		#increase sound volume (shift+0)
+		bindsym shift+9 exec "pactl set-sink-volume $(~/shs/sink.sh) -5% " 
+		#decrease sound volume (shift+()
+
+		bindsym i exec "~/shs/pyspot.sh search playlist"
 		bindsym r exec "~/shs/pyspot.sh search artist"
 		bindsym t exec "~/shs/pyspot.sh search track"
 		bindsym a exec "~/shs/pyspot.sh search album"
 		bindsym p exec "~/shs/spot.sh"
-		bindsym l exec "~/shs/splist.sh"
+		bindsym y exec "~/shs/splist.sh"
 		bindsym g exec "~/shs/pyspot.sh add"
 		bindsym s exec "~/shs/pyspot.sh shuffle"
-		bindsym Left exec "~/shs/pyspot.sh back"
-		bindsym Right exec "~/shs/pyspot.sh forward"
+		bindsym h exec "~/shs/pyspot.sh back"
+		bindsym l exec "~/shs/pyspot.sh forward"
 
 		#exiters	
 		bindsym $mod+r mode "resize"
@@ -390,12 +413,11 @@ gaps outer 0
 
 default_floating_border pixel 1 
 # class                 border  backgr. text    indicator child_border
-client.focused_inactive #1a1b26 #1a1b2600 #1a1b26 #1a1b26   #1a1b26
-client.unfocused        #1a1b26 #1a1b2600 #1a1b26 #1a1b26   #1a1b26
-client.focused          #7aa2f7 #7aa2f700 #ffffff #7aa2f7   #7aa2f7
-client.urgent           #ff0000 #ff000000 #ffffff #ff0000   #ff0000
-client.placeholder      #1a1b26 #1a1b2600 #1a1b26 #1a1b26   #1a1b26
-
-client.background       #00ff0000
+client.focused_inactive #1a1b26 #1a1b26 #a9b1d6 #1a1b26   #1a1b26
+client.unfocused        #1a1b26 #1a1b26 #a9b1d6 #1a1b26   #1a1b26
+client.focused          #7aa2f7 #7aa2f7 #1a1b26 #7aa2f7   #7aa2f7
+client.urgent           #f45130 #f45130 #1a1b26 #f45130   #f45130
+client.placeholder      #1a1b26 #1a1b26 #1a1b26 #1a1b26   #1a1b26
+client.background       #00ff00
 
 exec "feh --bg-fill -zD 14400 ~/wallpapers/*"

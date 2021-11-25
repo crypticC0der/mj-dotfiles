@@ -40,7 +40,6 @@
 (setq evil-motion-trainer-threshold 5)
 (global-evil-motion-trainer-mode 1)
 (load! "~/.doom.d/slack.el")
-(global-undo-tree-mode)
 (setq slack-render-image-p `t)
 (load-file "~/.emacs.d/.local/straight/repos/discord-emacs.el/discord-emacs.el")
 (load-file "~/.doom.d/email.el")

@@ -21,9 +21,6 @@
   (:host github :repo "yuya373/helm-slack"))
 (package! evil-motion-trainer :recipe
   (:host github :repo "martinbaillie/evil-motion-trainer"))
-(package! lsp-pyright)
-(package! undo-tree)
-(package! lsp-pyright)
 (package! discord-emacs :recipe
   (:host github :repo "simmsb/discord-emacs.el"))
 (package! reddigg)

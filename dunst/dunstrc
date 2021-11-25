@@ -386,9 +386,13 @@
 #    summary = "*"
 #    script = dunst_espeak.sh
 
-#[script-test]
-    #appname = "discord"
-    #click_script = "~/shs/dcord.sh"
+[profanity-urgent]
+    appname = "profanity"
+    script = "~/shs/dcord.sh"
+
+[discord-urgent]
+    appname = "discord"
+    script = "~/shs/dcord.sh"
 
 #[ignore]
 #    # This notification will not be displayed
