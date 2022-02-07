@@ -16,6 +16,9 @@
 ;  :recipe (:host github :repo "username/repo"))
 (package! impatient-mode)
 (package! alert)
+(package! renpy)
+(package! kak
+  :recipe (:host github :repo "aome510/kak.el"))
 (package! slack)
 (package! helm-slack :recipe
   (:host github :repo "yuya373/helm-slack"))
@@ -26,6 +29,8 @@
 (package! reddigg)
 (package! unity :recipe
   (:host github :repo "elizagamedev/unity.el"))
+(package! w3m :recipe
+  (:host github :repo "emacs-w3m/emacs-w3m"))
 (add-hook 'after-init-hook #'unity-build-code-shim)
 (add-hook 'after-init-hook #'unity-setup)
 ;; If the package you are trying to install does not contain a PACKAGENAME.el

@@ -239,6 +239,9 @@ store(){
 	ln -s /mnt/BigLinux/$1 $1; 
 }
 
+csh(){
+	pwd > /tmp/cpwd
+}
 
 plugins=(
   git
@@ -284,3 +287,12 @@ alias lat="exa -lars time"
 alias ytdl="youtube-dl"
 alias peaclock="peaclock --config-dir ~/.config/peaclock"
 alias php=php7
+alias g="git"
+
+
+if [ -f "/tmp/cpwd" ];then
+	cd $(cat /tmp/cpwd)
+	rm /tmp/cpwd
+fi 
+
+eval $(thefuck --alias)

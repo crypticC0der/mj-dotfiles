@@ -39,19 +39,19 @@ icon-title {
 
 @media (min-width: 1440) {
 	icon-title {
-		padding:						0px 0px 0px 58%;
+		padding:						-12% 0px 0px 58%;
 	}
 	icon-banner{
-		padding:						0px 0px 0px -25%;
+		padding:						-87% 0px 0px 25%;
 	}
 }
 
 @media (min-width: 1920) {
 	icon-title {
-		padding:						0px 0px 0px 68%;
+		padding:						-100px 0px 0px 68%;
 	}
 	icon-banner{
-		padding:						0px 0px 0px 0%;
+		padding:						-73% 0px 0px 0%;
 	}
 }
 

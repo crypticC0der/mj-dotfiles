@@ -31,9 +31,11 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type `relative)
+;; lol
+(setq display-line-numbers `relative)
+(setq display-line-numbers-type `visual)
 (setq doom-font (font-spec :family "hack" :size 12))
-(setq doom-theme 'doom-tokyo-night)
+(load-theme 'doom-tokyo-night t)
 (setq global-whitespace-mode `t)
 (setq whitespace-style `trailing)
 (setq whitespace-mode `t)
@@ -52,6 +54,10 @@
 (setq doom-modeline-modal-icon nil)
 (discord-emacs-run "384815451978334208")
 (setq-default major-mode 'org-mode)
+
+(evil-define-key 'visual evil-mc-key-map
+  "A" #'evil-mc-make-cursor-in-visual-selection-end
+  "I" #'evil-mc-make-cursor-in-visual-selection-beg)
 
 (after! org
   ;; Import ox-latex to get org-latex-classes and other funcitonality
@@ -93,11 +99,35 @@
       "<f5>" #'minimap-mode
       "<f8>" #'treemacs)
 
+(defun calendar-insert-date ()
+  "Capture the date at point, exit the Calendar, insert the date."
+  (interactive)
+  (seq-let (month day year) (save-match-data (calendar-cursor-to-date))
+    (calendar-exit)
+    (insert (format "%d-%02d-%02d" year month day))))
+
+
+
+(define-key calendar-mode-map (kbd "RET") 'calendar-insert-date)
 (map! :desc "resize"
      "C-S-k" #'evil-window-increase-height
      "C-S-j" #'evil-window-decrease-height
      "C-S-l" #'evil-window-increase-width
      "C-S-h" #'evil-window-decrease-width)
+(setq browse-url-browser-function 'w3m-browse-url)
+(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+;; optional keyboard short-cut
+(global-set-key "\C-xm" 'browse-url-at-point)
+
+(use-package kak)
+(map!
+  :v "|" #'kak-exec-shell-command
+  :v "s" (lambda (beg end) (interactive "r") (kak-select beg end nil))
+  :v "S" (lambda (beg end) (interactive "r") (kak-select beg end t))
+  :v "M-s" #'kak-split-lines
+  :v "M-k" (lambda () (interactive) (kak-filter t))
+  :v "M-K" (lambda () (interactive) (kak-filter nil))
+  :v ". #" #'kak-insert-index)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

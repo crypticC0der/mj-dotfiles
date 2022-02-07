@@ -18,7 +18,6 @@ set foldlevelstart=99
 cabbrev bterm bo term
 call plug#begin("~/.config/nvim/plugged")
 "Plug 'junegunn/fzf.vim'
-Plug 'simnalamburt/vim-mundo.git'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -30,8 +29,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'takac/vim-hardtime'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'ms-jpq/coq_nvim', {'branch':'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'scrooloose/nerdtree'
@@ -70,7 +67,6 @@ inoremap <Down> <C-o>:echo "Stop being stupid"<CR>
 nnoremap <Left> :echo "Stop being stupid"<CR>
 vnoremap <Left> :<C-u>echo "Stop being stupid"<CR>
 inoremap <Left> <C-o>:echo "Stop being stupid"<CR>
-nnoremap <F5> :MundoToggle<CR>
 
 if (&tildeop)
   nmap gcw guw~l
@@ -97,25 +93,11 @@ endif
 
 "let g:airline_section_b = airline#section#create(['mode', ' ' ,'branch'] )
 set termguicolors
+colorscheme tokyonight
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 0
 let g:airline_theme = "tokyonight"
 set pumheight=20
-
-"autocmd BufEnter * lua require'completion'.on_attach()
-lua << EOF
-require'lspinstall'.setup()
-
-local servers = require'lspinstall'.installed_servers()
-local coq = require "coq"
-for _, server in pairs(servers) do
-	require'lspconfig'[server].setup{}
-end
-
-
-
-EOF
-colorscheme tokyonight
 
 "keybinds
 nmap <silent> <c-k> :wincmd k<CR>
@@ -140,8 +122,6 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 let g:airline_symbols.dirty ='!'
 let g:airline_symbols.notexists='?'
-let g:coq_settings = { 'display.icons.mode': 'none', "display.ghost_text.enabled" : v:false ,"display.pum.fast_close" : v:false }
-COQnow -s
 
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
    \ quit | endif

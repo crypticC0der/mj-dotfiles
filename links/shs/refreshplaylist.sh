@@ -1,3 +1,4 @@
+source ~/.spotclientpy
 cd ~/Documents/Programming/python/spotifyshortcuts
 while true
 do

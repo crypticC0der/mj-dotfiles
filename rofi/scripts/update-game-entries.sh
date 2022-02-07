@@ -15,7 +15,7 @@ steam-libraries() {
     # Additional library folders are recorded in libraryfolders.vdf
     libraryfolders=$STEAM_ROOT/steamapps/libraryfolders.vdf
     if [ -e "$libraryfolders" ]; then
-        awk -F\" '/^[[:space:]]*"[[:digit:]]+"/ {print $4}' "$libraryfolders"
+        awk -F\" '/^[[:space:]]*"path"/ {print $4}' "$libraryfolders"
     fi
 }
 

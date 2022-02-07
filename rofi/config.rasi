@@ -2,9 +2,9 @@ configuration {
     font:                           "Fira Sans 13";
 	modi: "window,run,ssh,drun";
 	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
-	theme: "Sunset";
 	kb-accept-alt: "Shift+Return,Shift+space";
 }
+@theme "Sunset"
 
 * {
     background-color:               transparent;
