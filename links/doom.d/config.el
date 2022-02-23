@@ -44,7 +44,6 @@
 (load! "~/.doom.d/slack.el")
 (setq slack-render-image-p `t)
 (load-file "~/.emacs.d/.local/straight/repos/discord-emacs.el/discord-emacs.el")
-(load-file "~/.doom.d/email.el")
 (setq doom-modeline-major-mode-icon t)
 (setq doom-modeline-buffer-state-icon t)
 (setq doom-modeline-enable-word-count t)
@@ -93,22 +92,12 @@
 (defun conf (item)
   (interactive "*sWhat are you configuring: ")
   (cd "~/.config")
-  (evil-edit item))
+  (find-file item))
 
 (map! :desc "function keys"
       "<f5>" #'minimap-mode
       "<f8>" #'treemacs)
 
-(defun calendar-insert-date ()
-  "Capture the date at point, exit the Calendar, insert the date."
-  (interactive)
-  (seq-let (month day year) (save-match-data (calendar-cursor-to-date))
-    (calendar-exit)
-    (insert (format "%d-%02d-%02d" year month day))))
-
-
-
-(define-key calendar-mode-map (kbd "RET") 'calendar-insert-date)
 (map! :desc "resize"
      "C-S-k" #'evil-window-increase-height
      "C-S-j" #'evil-window-decrease-height
@@ -118,6 +107,11 @@
 (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
 ;; optional keyboard short-cut
 (global-set-key "\C-xm" 'browse-url-at-point)
+
+
+(setq deft-directory "~/Documents/University/"
+      deft-extensions '("txt" "org")
+      deft-recursive t)
 
 (use-package kak)
 (map!
@@ -145,3 +139,6 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(after! org
+  (setq org-hide-emphasis-markers t))
