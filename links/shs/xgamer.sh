@@ -4,3 +4,4 @@ xrandr --output DisplayPort-2 --off
 xrandr --output HDMI-A-0 --off
 xrandr --output HDMI-A-1 --off
 feh --bg-fill -z ~/wallpapers/*
+dunstctl set-paused true

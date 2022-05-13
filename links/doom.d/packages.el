@@ -31,6 +31,7 @@
   (:host github :repo "elizagamedev/unity.el"))
 (package! w3m :recipe
   (:host github :repo "emacs-w3m/emacs-w3m"))
+(package! org-fragtog)
 (add-hook 'after-init-hook #'unity-build-code-shim)
 (add-hook 'after-init-hook #'unity-setup)
 (package! org-journal)

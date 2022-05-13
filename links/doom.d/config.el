@@ -6,7 +6,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "MJ Ponsonby"
-      user-mail-address "mj@biosmp.co.uk")
+      user-mail-address "mj@crypticcoder.co.uk")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -27,14 +27,16 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+; (setq org-directory "~/org/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 ;; lol
 (setq display-line-numbers `relative)
 (setq display-line-numbers-type `visual)
-(setq doom-font (font-spec :family "hack" :size 12))
+;; (setq doom-font (font-spec :family "hack" :size 12))
+(setq doom-font (font-spec :family "FiraMath"))
+(setq doom-font (font-spec :family "FiraCode" :size 12))
 (load-theme 'doom-tokyo-night t)
 (setq global-whitespace-mode `t)
 (setq whitespace-style `trailing)
@@ -81,7 +83,8 @@
     (unless (boundp 'org-latex-classes)
       (setq org-latex-classes nil)))
 )
-;;;###autoload
+
+;;;autoload
 (defun mk-project (type name)
     (interactive "*sEnter project type: \nsEnter project name: ")
     (cd "~/Documents/Programming")
@@ -110,7 +113,7 @@
 
 
 (setq deft-directory "~/Documents/University/"
-      deft-extensions '("txt" "org")
+      deft-extensions '("org")
       deft-recursive t)
 
 (use-package kak)
@@ -142,3 +145,23 @@
 
 (after! org
   (setq org-hide-emphasis-markers t))
+
+
+;; enable python for in-buffer evaluation
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
+
+;; all python code be safe
+(defun my-org-confirm-babel-evaluate (lang body)
+(not (string= lang "python")))
+(setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+
+(use-package org-fragtog)
+(add-hook 'org-mode-hook 'org-fragtog-mode)
+
+(after! circe
+  (set-irc-server! "ubq323.website"
+    '(:port 6667
+      :nick "mj"
+      :channels ("#a"))))

@@ -60,7 +60,7 @@ fixed-center = true
 ; the percentage can optionally be extended with a pixel offset like so:
 ; 50%:-10, this will result in a width or height of 50% minus 10 pixels
 width = 100%
-height = 30
+height = 24
 
 ; Offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
 ; the percentage can optionally be extended with a pixel offset like so:
@@ -111,12 +111,12 @@ border-bottom-color = ${color.foreground}
 ; Number of spaces to add at the beginning/end of the bar
 ; Individual side values can be defined using:
 ;   padding-{left,right}
-padding = 2
+padding = 0
 
 ; Number of spaces to add before/after each module
 ; Individual side values can be defined using:
 ;   module-margin-{left,right}
-module-margin-left = 1
+module-margin-left = 0
 module-margin-right = 1
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -129,7 +129,7 @@ module-margin-right = 1
 ;   font-3 = FontAwesome:size=10
 ; See the Fonts wiki page for more details
 
-font-0 = "Terminus:size=14;3"
+font-0 = "Terminus:size=13;3"
 font-1 = "waffle:size=14;3"
 font-2 = "Noto Sans CJK TC Medium:size=10:Noto Sans CJK TC:style=Medium;0"
 font-3 = "NotoSansMedium:size=10:style=Medium;0"
@@ -141,7 +141,7 @@ font-3 = "NotoSansMedium:size=10:style=Medium;0"
 
 modules-left = title sep cpu memory filesystem
 modules-center = playing sep date
-modules-right = wired-network sep volume temperature sep i3 
+modules-right = wired-network sep volume temperature sep i3
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 

@@ -253,6 +253,7 @@ plugins=(
 )
 source $ZSH/oh-my-zsh.sh
 
+
 #aliases
 alias nv="nvim"
 alias fzf='fzf --bind "right:replace-query" --bind "left:clear-query"'
@@ -288,7 +289,11 @@ alias ytdl="youtube-dl"
 alias peaclock="peaclock --config-dir ~/.config/peaclock"
 alias php=php7
 alias g="git"
+alias l="ls -lahd */"
 
+cmd="lmao"
+preexec(){ cmd=$1; }
+precmd(){ if [ "$cmd" ]; then lcmd=$cmd; cmd=; else; l; fi; }
 
 if [ -f "/tmp/cpwd" ];then
 	cd $(cat /tmp/cpwd)

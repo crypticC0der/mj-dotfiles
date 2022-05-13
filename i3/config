@@ -13,42 +13,62 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-exec "unclutter" 
+exec --no-startup-id "unclutter" 
+exec --no-startup-id redshift -l 53.467:2.225
 exec "sh -c '~/shs/all.sh'"
 exec "sh -c '~/shs/xload.sh'"
-exec "picom" 
-set $mod Mod4
+exec --no-startup-id "picom" 
 focus_follows_mouse no
-exec "/home/mj/.config/polybar/launch.sh"
-exec "dunst"
-exec "~/shs/lock.sh"
+exec --no-startup-id "/home/mj/.config/polybar/launch.sh"
+exec --no-startup-id "dunst"
 font pango:Hack 9
 
-
-floating_modifier $mod
+set $mod Mod4
+set $ws1 "11:1"
+set $ws2 "12:2"
+set $ws3 "13:3"
+set $ws4 "14:4"
+set $ws5 "15:5"
+set $ws6 "16:6"
+set $ws7 "17:7"
+set $ws8 "18:8"
+set $ws9 "19:9"
+set $ws10 "20:10"
+set $wsm 69:M
+set $wsa 0:A
+set $wsb 1:B
+set $wsc 2:C
+set $center DisplayPort-0
+set $left DisplayPort-1
+set $right DisplayPort-2
 
 include ~/.config/i3/modes.conf
 include ~/.config/i3/binds.conf
+
+floating_modifier $mod
 
 focus_wrapping no
 focus_on_window_activation none
 workspace_auto_back_and_forth yes
 
-assign [class="deadcells"] 1
-assign [class="Spotify"] 5
-assign [class="spotify"] 5
-assign [title="Steam"] 4
-assign [class="Thunderbird"] 4
-assign [class="mpv"] 1
+assign [class="deadcells"] $ws1
+assign [class="Spotify"] $ws5
+assign [class="spotify"] $ws5
+assign [class="Steam"] $ws4
+assign [class="Thunderbird"] $ws4
+assign [class="mpv"] $ws1
+for_window [class ="mpv"] fullscreen toggle
+assign [class="(?i)unity"] $ws2
 
-for_window [class = "Spotify"] move to workspace "5"
+for_window [class = "Spotify"] move to workspace $ws5
 for_window [class="(?i)unity"] floating disable
 for_window [window_type="dialog"] floating enable
 
-for_window [class="discord"] move to workspace M
-for_window [title="profanity"] move to workspace M
-for_window [title="weechat"] move to workspace M
+for_window [class="discord"] move to workspace $wsm
+for_window [title="^profanity$"] move to workspace $wsm
+for_window [title="^weechat$"] move to workspace $wsm
 
+for_window [class="^.*"] border 1pixel
 hide_edge_borders both
 default_border pixel 1
 gaps inner 5
@@ -63,4 +83,14 @@ client.urgent           #f45130 #f45130 #1a1b26 #f45130   #f45130
 client.placeholder      #1a1b26 #1a1b26 #1a1b26 #1a1b26   #1a1b26
 client.background       #00ff00
 
-exec "feh --bg-fill -zD 14400 ~/wallpapers/*"
+exec --no-startup-id "feh --bg-fill -zD 14400 ~/wallpapers/*"
+exec --no-startup-id spotify
+exec --no-startup-id "glava -d"
+exec --no-startup-id "st -e 'profanity'"
+exec --no-startup-id "st -e 'weechat'"
+exec --no-startup-id discord
+exec --no-startup-id steam
+exec --no-startup-id thunderbird
+exec --no-startup-id "emacs"
+
+exec "~/shs/lock.sh"
